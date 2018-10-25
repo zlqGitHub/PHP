@@ -6,6 +6,7 @@
 </head>
 <body>
 	<?php 
+		//判断表单提交方式
 		if($_SERVER['REQUEST_METHOD'] == "POST"){
 			echo "POST方式提交！<br>";
 		}else{
@@ -50,7 +51,7 @@
 
 		//单选框处理
 		$radio = $_POST['radio'];
-		if($radio  == "蓝天"){
+		if($radio  == "蓝天"){    //变量与字符串是否相等直接用"=="
 			echo "选中了蓝天<br>";
 		}
 		if($radio  == "白云"){
