@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单设计</title>
+</head>
+<body>
+	<form action="formdemohandler.php" method="post">
+		<h3>输入一个信息 (比如名称):</h3>
+		<input type="text" name="name" size="10">  <!--size修改文本框的大小-->
+
+		<h3>确认此项 (可复选):</h3>   <!--name不能一样-->
+		<input type="checkbox" name="achecked" value="A" checked>A
+		<input type="checkbox" name="bchecked" value="B" >B
+		<input type="checkbox" name="cchecked" value="C" >C
+
+		<h3>单一选项:</h3>   <!--name可以一样-->
+		<input type="radio" name="radio" value="蓝天" checked="">蓝天
+		<input type="radio" name="radio" value="白云">白云
+		<input type="radio" name="radio" value="大海">大海
+
+		<br><br><input type="submit" name="提交">
+
+	</form>
+	
+</body>
+</html>
