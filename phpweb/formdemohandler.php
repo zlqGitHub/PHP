@@ -50,16 +50,31 @@
 		}
 
 		//单选框处理
-		$radio = $_POST['radio'];
-		if($radio  == "蓝天"){    //变量与字符串是否相等直接用"=="
+		if(isset( $_POST['radio'])){
+			$radio = $_POST['radio'];
+
+			if($radio  == "蓝天"){    //变量与字符串是否相等直接用"=="
 			echo "选中了蓝天<br>";
+			}
+			if($radio  == "白云"){
+				echo "选中了白云<br>";
+			}
+			if($radio  == "大海"){
+				echo "选中了大海<br>";
+			}
+		}else{
+			echo "没有选项被选中！<br>";
 		}
-		if($radio  == "白云"){
-			echo "选中了白云<br>";
-		}
-		if($radio  == "大海"){
-			echo "选中了大海<br>";
-		}
+
+		//下拉框的处理
+		$type = $_POST['type'];
+
+		echo "我想去".$type."<br>";
+
+		
+
+		
+		
 
 
 	?>
