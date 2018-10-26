@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>在线订房页面效果</title>
+	<link rel="icon" type="text/css" href="favicon.ico">   <!--设置icon图标-->
+	<h2>GoodHome在线订房</h2>
+</head>
+<body>
+
+	<form action="fiel.php" method="post">  
+		<table border="1">
+			<tr bgcolor="#3399FF">
+				<td>客户姓名：</td>
+				<td>
+					<input type="text" name="username" size="10">
+				</td>
+			</tr>
+			<tr bgcolor="#CCC">
+				<td>客户性别：</td>
+				<td>
+					<select name="gender">
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+				</td>
+			</tr>
+			<tr bgcolor="#3399FF">
+				<td>到达时间：</td>
+				<td>
+					<select name="arrivaltime">
+						<option value="1">一天后</option>
+						<option value="2">两天后</option>
+						<option value="3">三天后</option>
+					</select>
+				</td>
+			</tr>
+			<tr bgcolor="#CCC">
+				<td>电话：</td>
+				<td>
+					<input type="text" name="telphone" size="10">
+				</td>
+			</tr>
+			<tr bgcolor="#3399FF">
+				<td>email：</td>
+				<td>
+					<input type="text" name="email">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="确认订房信息" >
+				</td>
+			</tr>
+
+
+		</table>
+
+	</form>
+
+	
+</body>
+</html>
