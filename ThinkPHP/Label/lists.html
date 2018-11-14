@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户列表</title>
+</head>
+<body>
+{volist name="list" id="vo"}
+{$vo.id}===>{$vo.name}<br>
+{/volist}
+
+{volist name="list" id="vo" offset="0" length='1'}
+{$vo.name}
+{/volist}
+<br>
+************************
+<br>
+{foreach $list as $vo}
+{$vo.id}:{$vo.name}<br>
+{/foreach}
+<br>
+************************
+<br>
+{for start="1" end="10"}
+{$i}
+{/for}<br>
+
+<!--建议需要使用PHP代码的时候尽量采用php标签，因为原生的PHP语法可能会被配置禁用而导致解析错误-->
+<!--使用原生php代码-->
+<?php echo "Hello World!" ?><br>
+
+<!--使用php标签-->
+{php} echo "Hello World!" {/php}
+
+<!--注意：php标签或者php代码里面就不能再使用标签（包括普通标签和XML标签）了-->
+<!--{php} {$list} echo "Hello World!" {/php}         出错，解析了两次-->
+
+
+</body>
+</html>
