@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>继承模板</title>
+</head>
+<body>
+{extend name="base" /}    <!--继承基础模块base-->
+<!--对基础模板中的区块进行重载定义-->
+<!--区块中有{_block_}这个标签，当区块中有这个标记时，就不只是直接重载这个区块，它表示引用所继承模板对应区块的内容到这个位置，最终这个区块是合并后的内容-->
+{block name="header"}{__block__}
+<div style="width: 100%;height: 200px;background-color: green">我是头部</div>
+{/block}<br>
+
+{block name="footer"}
+<div  style="width: 100%;height: 100px;background-color: yellow">我是子模版的底部</div>
+{/block}
+
+<!--在当前子模板中，只能定义区块而不能定义其他的模板内容，否则将会直接忽略，并且只能定义基础模板中已经定义的区块-->
+我是区块外的内容
+
+</body>
+</html>
+

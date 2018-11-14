@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础模板(用来被继承)</title>
+</head>
+<body>
+<!--block标签必须指定name属性来标识当前区块的名称，这个标识在当前模板中应该是唯一的，block标签中可以包含任何模板内容，包括其他标签和变量-->
+{block name="header"}
+<div style="width: 100%;height: 100px;background-color: red">我是头部</div>
+{/block}<br>
+
+{block name="footer"}
+<div  style="width: 100%;height: 100px;background-color: blue">我是底部</div>
+{/block}
+
+
+
+</body>
+</html>
