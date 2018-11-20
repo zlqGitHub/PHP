@@ -5,6 +5,7 @@
         public $database;
         public $server_name;
         public $server_password;
+        public $db;
 
         function mysql(){
             //构造函数初始化所要连接的数据库
@@ -24,7 +25,10 @@
 
             //连接服务器和数据库
             if(@$id = mysqli_connect("localhost",$this->server_name,$this->server_password)){
-                if(!mysqli_select_db($this->database,$id)){
+//                var_dump($id);
+                global $db;
+                $db = mysqli_select_db($id,$this->database);
+                if(!$db){
                     echo "数据库连接失败！！！";
                     exit;   //退出
                 }
@@ -38,7 +42,10 @@
 
         function excu($query){
             //执行SQL语句
-            if($result = mysqli_query($query)){
+            $this->db;
+            $db = mysqli_connect("localhost",$this->server_name,$this->server_password,$this->database);
+            $db->query("SET NAMES utf8");     //从数据库中读取数据后，出现乱码的解决方法
+            if($result = mysqli_query($db,$query)){
                 return $result;
             }
             else{
