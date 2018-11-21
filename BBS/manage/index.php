@@ -1,12 +1,12 @@
 <?php
     include "session.inc";
 ?>
-
+<!--后台管理主页面-->
 <html>
 <head>
     <meta charset="UTF-8">
 
-    <title>Document</title>
+    <title>迅捷 BBS 系统-后台管理</title>
 </head>
     <frameset id="frame" cols="200,*" scrolling="yes">
         <frame name="left" src="index_left.php" scrolling="yes">
