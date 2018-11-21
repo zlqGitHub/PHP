@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,13 +36,13 @@
         var displayBar = true;
         function switchBar(object) {
             if(displayBar){
-                parent.frames.cols='0,*';
+                parent.frame.cols='0,*';
                 displayBar = false;
                 object.src='image/admin_top_open.png';
                 object.title = '打开左边管理导航菜单';
             }
             else{
-                parent.frames.cols='200,*';
+                parent.frame.cols='200,*';
                 displayBar = true;
                 object.src='image/admin_top_close.png';
                 object.title = '关闭左边管理导航菜单';
@@ -59,7 +60,7 @@
 <table width="100%">
     <tbody>
         <tr valign="center">
-            <td width="120">
+            <td width="20">
                 <img title="关闭左边管理导航菜单" style="cursor: hand;" src="image/admin_top_close.png" onclick="switchBar(this)">
             </td>
             <td width="92">
