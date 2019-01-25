@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>post文件上传</title>
 </head>
 <body>
-$END$
+    <!--
+        注意：文件上传时，一般使用POST提交
+              需要在表单中使用   enctype="multipart/form-data"
+
+              上传文件时在PHP文件中通过$_FILES获取
+              PHP文件中默认会上传到一个临时目录，接收完毕后自动删除
+    -->
+
+    <!--
+        大文件的上传：
+            默认情况下服务器对上传文件的大小是有限制的，如果想要修改上传文件的限制可以修改php.ini文件
+                 D:\wamp\bin\apache\apache2.4.9\bin
+            file_uploads = On;  允许上传文件 On/Off 默认是On
+            upload_max_filesize = 2048M;   上传文件的最大限制
+            post_max_size = 2048M;    通过POST提交的最多数据
+
+            max_execution_time = 30000;   脚本最长的执行时间  单位为秒
+            max_input_time = 30000;     接收提交数据的时间限制  单位为秒
+            memory_limit = 2048M;    最大的内存消耗
+
+    -->
+    <form action="04.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="upFile"><br>
+        <input type="submit" value="上传">
+    </form>
+
 </body>
 </html>
