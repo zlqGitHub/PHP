@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>post请求处理</title>
 </head>
 <body>
-$END$
+    <!--
+        可以通过form表单的method属性指定发送的类型（get、post）
+        post请求会将提交的数据放到请求头中
+    -->
+    <form action="02.php" method="post">
+        <input type="text" name="userName"><br>
+        <input type="password" name="userPass"><br>
+        <input type="submit" value="提交">
+    </form>
+
 </body>
 </html>
