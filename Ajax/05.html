@@ -2,9 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Ajax-GET基本使用</title>
+    <!--
+        Ajax:
+            AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。（网页重新加载说明没有使用Ajax）
+    -->
+    <script>
+        window.onload = function (ev1) {
+            var oBtn = document.querySelector("button");
+            oBtn.onclick = function () {
+                /* 使用Ajax  http://www.w3school.com.cn/ajax/index.asp  */
+                //1.创建一个异步对象
+                xmlhttp=new XMLHttpRequest();
+                //2.设置请求方式和请求地址
+                /*
+                    open(method,url,async)方法	规定请求的类型、URL 以及是否异步处理请求。
+                    method：请求的类型；GET 或 POST
+                    url：文件在服务器上的位置
+                    async：true（异步）或 false（同步）
+                        注意：ajax存在的意义就是异步，所以第三个参数始终传true
+                */
+                xmlhttp.open("GET","05.php",true);
+                //3.发送请求
+                /*
+                    send(string）方法将请求发送到服务器。
+                        注意：string仅用于 POST 请求
+                */
+                xmlhttp.send();
+                //4.监听状态的变化
+                xmlhttp.onreadystatechange = function (ev2) {
+                    /*
+                        请求状态
+                        0: 请求未初始化
+                        1: 服务器连接已建立
+                        2: 请求已接收
+                        3: 请求处理中
+                        4: 请求已完成，且响应已就绪
+                    */
+                    //注意:==是判断是否相等   ===是严格判断是否相等
+                    if(xmlhttp.readyState === 4){
+                        //判断是否请求成功
+                        if(xmlhttp.status >= 200 && xmlhttp.status < 300 || xmlhttp.status === 304){
+                            //5.处理返回结果
+                            console.log("接收到服务器返回的数据");
+                        }
+                        else {
+                            console.log("没有接收到服务器数据");
+                        }
+
+                    }
+                }
+
+            }
+        }
+    </script>
+
 </head>
 <body>
-$END$
+    <button>发送请求</button>
+
 </body>
 </html>
