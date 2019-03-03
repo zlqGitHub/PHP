@@ -7,7 +7,7 @@
         Ajax:
             AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。（网页重新加载说明没有使用Ajax）
     -->
-    <script src="myAjax.js"></script>
+    <script src="myAjax2.js"></script>
     <script>
         window.onload = function (ev1) {
             var oBtn = document.querySelector("button");
@@ -20,7 +20,9 @@
                 // encodeURIComponent("张三");   将其转化为百度码
                 //http://www.baidu.com/s?wd=%E5%BC%A0%E4%B8%89
                 //url?key-value&key=value;
-                ajax("05.php",{
+
+                //function ajax(type,url,obj,timeout,success,error) { }    //type表示请求类型、timeout表示超时时间
+                ajax("POST","07.php",{
                     "userName":"zlq",
                     "password":123456
                 },3000,function (xhr) {     //3000ms表示超时时间
