@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax-POST基本使用</title>
+    <script>
+        /*
+            POST与GET不同的是：请求的参数不同
+        */
+        window.onload = function (ev) {
+            var oBtn = document.querySelector("button");
+            oBtn.onclick = function (ev1) {
+                // IE浏览器兼容性问题
+                var xhr;
+                if (window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                    xhr=new XMLHttpRequest();
+                }
+                else
+                {// code for IE6, IE5
+                    xhr=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                // var xhr = new XMLHttpRequest();
+
+                /*
+                    在IE浏览器中，如果通过Ajax发送GET请求，那么IE浏览器认为同一个URL只有一个结果
+                        因此需要后面加个一参数时刻改变请求的URL
+                        console.log(Math.random());
+                        console.log(new Date().getTime());
+                */
+
+                xhr.open("POST","07.php",true);
+                //注意点：以下代码必须放在open和send之间   http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_send.asp
+                xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xhr.send("userName=zlq&password=123456");     //传参
+                xhr.onreadystatechange = function (ev2) {
+                    if(xhr.readyState === 4){
+                        if(xhr.status >= 200 && xhr.status <300 || xhr.status === 304){
+                            // alert("请求成功");
+                            alert(xhr.responseText);   //获得字符串形式的响应数据
+                            console.log(xhr.responseText);
+                        }
+                        else{
+                            alert("请求失败");
+                        }
+                    }
+                }
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<button>发送请求</button>
+
+</body>
+</html>
