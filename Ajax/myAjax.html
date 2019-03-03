@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试封装的ajax()方法</title>
+    <!--
+        Ajax:
+            AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。（网页重新加载说明没有使用Ajax）
+    -->
+    <script src="myAjax.js"></script>
+    <script>
+        window.onload = function (ev1) {
+            var oBtn = document.querySelector("button");
+
+            // var res = encodeURIComponent("张三");
+            // console.log(res);
+
+            oBtn.onclick = function () {
+                //注意：url中不要出现中文，当有中文是（"wd=张三"）
+                // encodeURIComponent("张三");   将其转化为百度码
+                //http://www.baidu.com/s?wd=%E5%BC%A0%E4%B8%89
+                //url?key-value&key=value;
+                ajax("05.php",{
+                    "userName":"zlq",
+                    "password":123456
+                },3000,function (xhr) {     //3000ms表示超时时间
+                    alert(xhr.responseText);
+                    console.log(xhr.responseText);
+                },function (xhr) {
+                    alert("请求失败");
+                });
+
+            }
+        }
+    </script>
+
+</head>
+<body>
+<button>发送请求</button>
+
+</body>
+</html>
