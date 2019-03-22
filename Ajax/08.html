@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax-jQuery封装</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        window.onload = function (ev) {
+            var oBtn = document.querySelector("button");
+            oBtn.onclick = function (ev1) {
+                /*
+                    jQuery中的ajax()方法的有点：
+                        1.请求类型可以是小写
+                        2.传递的参数是对象，可以随意切换位置
+                */
+                $.ajax({
+                    type: "GET",
+                    url: "08.php",
+                    data: "userName=zlq&password=123456",
+                    success: function(msg){
+                        alert(msg);
+                    },
+                    error: function(msg){
+                        alert( msg.status );
+                    }
+
+                });
+            }
+        }
+
+
+    </script>
+
+</head>
+<body>
+<button>发送请求</button>
+
+</body>
+</html>
