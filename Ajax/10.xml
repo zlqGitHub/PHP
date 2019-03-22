@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 注意：xml文件必须以第一句开头，内容必须放在根节点中(根节点随便写) -->
+<note>
+    <name>张利强</name>
+    <age>22</age>
+</note>
