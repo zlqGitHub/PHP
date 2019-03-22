@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通过ajax获取服务器数据并在页面显示</title>
+    <style>
+        div{
+            width: 350px;
+            height: 320px;
+            border: 1px solid black;
+            margin: 100px auto;
+            text-align: center;
+        }
+        img{
+            display: block;
+            width: 245px;
+            height: 185px;
+            background: #eee;
+            margin-left: 52px;
+        }
+    </style>
+    <script src="myAjax2.js"></script>
+    <script>
+        window.onload = function () {
+            var oTitle = document.querySelector("#title");
+            var oDes = document.querySelector("#des");
+            var oImg = document.querySelector("img");
+            var oBtns = document.querySelectorAll("button");
+
+            //给按钮绑定事件
+            oBtns[0].onclick = function () {
+                var self = this;
+                //发送ajax请求到服务器
+                ajax2({
+                    type:"get",
+                    url:"09.php",
+                    data:{"name":this.getAttribute("name"),},
+                    timeout:3000,
+                    success:function (xhr) {
+                       /* // alert(xhr.responseText);
+                        var res = xhr.responseText.split("|");
+                        // console.log(res);
+                        oTitle.innerHTML = res[0];
+                        oDes.innerHTML = res[1];
+                        oImg.setAttribute("src",res[2]);*/
+                        var name = self.getAttribute("name");
+                        var res = xhr.responseXML;
+                        var info = res.querySelector(name);
+                        console.log(info);
+                        oTitle.innerHTML = info.querySelector("title").innerHTML;
+                        oDes.innerHTML = info.querySelector("des").innerHTML;
+                        oImg.src = info.querySelector("image").innerHTML;
+
+                    },
+                    error:function (xhr) {
+                        alert(xhr);
+                    }
+                });
+            }
+            oBtns[1].onclick = function () {
+                var self = this;
+                //发送ajax请求到服务器
+                ajax2({
+                    type:"get",
+                    url:"09.php",
+                    data:{"name":this.getAttribute("name"),},
+                    timeout:3000,
+                    success:function (xhr) {
+                        /*var res = xhr.responseText.split("|");
+                        // console.log(res);
+                        oTitle.innerHTML = res[0];
+                        oDes.innerHTML = res[1];
+                        oImg.setAttribute("src",res[2]);*/
+                        var name = self.getAttribute("name");
+                        var res = xhr.responseXML;
+                        var info = res.querySelector(name);
+                        // console.log(info);
+                        oTitle.innerHTML = info.querySelector("title").innerHTML;
+                        oDes.innerHTML = info.querySelector("des").innerHTML;
+                        oImg.src = info.querySelector("image").innerHTML;
+                    },
+                    error:function (xhr) {
+                        alert(xhr);
+                    }
+                });
+            }
+            oBtns[2].onclick = function () {
+                var self = this;
+                //发送ajax请求到服务器
+                ajax2({
+                    type:"get",
+                    url:"09.php",
+                    data:{"name":this.getAttribute("name"),},
+                    timeout:3000,
+                    success:function (xhr) {
+                       /* var res = xhr.responseText.split("|");
+                        // console.log(res);
+                        oTitle.innerHTML = res[0];
+                        oDes.innerHTML = res[1];
+                        oImg.setAttribute("src",res[2]);*/
+                        var name = self.getAttribute("name");
+                        var res = xhr.responseXML;
+                        var info = res.querySelector(name);
+                        oTitle.innerHTML = info.querySelector("title").innerHTML;
+                        oDes.innerHTML = info.querySelector("des").innerHTML;
+                        oImg.src = info.querySelector("image").innerHTML;
+
+                    },
+                    error:function (xhr) {
+                        alert(xhr);
+                    }
+                });
+            }
+
+        }
+        
+    </script>
+</head>
+<body>
+    <div>
+        <p id="title">商品标题名称</p>
+        <img src="" alt="">
+        <p id="des">商品信息描述</p>
+        <button name="xg">雪糕</button>
+        <button name="rw">人物</button>
+        <button name="yx">游戏</button>
+    </div>
+
+</body>
+</html>
