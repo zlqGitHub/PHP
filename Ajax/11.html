@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON</title>
+    <script>
+
+        var obj = {a: 'Hello', b: 'World'}; //这是一个对象，注意键名也是可以使用引号包裹的
+        var json = '{"a": "Hello", "b": "World"}'; //这是一个 JSON 字符串，本质是一个字符串(标准JSON字串)
+        var json2 = '{a: "Hello", b: "World"}'; //这是一个 JSON 字符串，本质是一个字符串(非标准JSON字串)
+        /*
+            注意：非标准的JSON字串转js对象时会报错,此时用eval()方法，它可以将标准与非标准的json进行转换
+                var obj = eval("("+json2+")");
+        */
+
+        // JSON 和 JS 对象互转
+        // 要实现从对象转换为 JSON 字符串，使用 JSON.stringify() 方法：
+        var json = JSON.stringify({a: 'Hello', b: 'World'}); //结果是 '{"a": "Hello", "b": "World"}'
+
+        // 要实现从 JSON 转换为对象，使用 JSON.parse() 方法：
+        var obj = JSON.parse('{"a": "Hello", "b": "World"}'); //结果是 {a: 'Hello', b: 'World'}
+
+        /*
+           在低版本的IE中不可以使用原生JSON.parse方法，但是可以使用json2.js这个框架来兼容
+        */
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
