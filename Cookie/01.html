@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookie</title>
+    <script>
+        window.onload = function () {
+            /*
+                cookie:会话跟踪技术   客户端   作用：将网页的数据保存早浏览器中
+                sesstion:会话跟踪技术  服务端
+
+                cookie生命周期：
+                    默认情况下，生命周期是一次回话（浏览器被关闭）
+                    如果通过设置expires 设置了过期时间，并且该时间没有过期，那么下次打开浏览器数据还是存在的
+                    如果通过expires设置了过期时间，如果已经过期，那么会立即删除保存的数据
+
+                cookie注意点：
+                    cookie默认不会保存任何数据
+                    cookie不能一次性设置多条数据，要想保存多条数据，必须一条一条来设置
+                    cookie有大小和个数的限制
+                        大小：4KB左右
+                        个数：20~50
+                 cookie作用范围：
+                    同一浏览器下的统一路径下访问
+
+                 完整保存cookie的形式：
+                    document.cookie = "age=20;path=/;domain=域名";
+
+            */
+
+            // var date = new Date();
+            // date.setDate(date.getDate() - 1);    //设置时间为明天
+            // document.cookie = "name='张利强';expires="+date.toGMTString()+";";
+            // // document.cookie = "age=20;";
+            // alert(document.cookie);
+
+            // document.cookie = "name=zlq";
+            // document.cookie = "age=20";
+            // console.log(document.cookie);   //两个数据都输出
+
+            document.cookie = "name=zlq;age=20";
+            alert(document.cookie);  //只输出了name
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
