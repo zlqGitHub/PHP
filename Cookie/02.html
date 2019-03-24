@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookie封装</title>
+    <script>
+        window.onload = function () {
+            // addCookie("name","zlq");
+            // addCookie("sex","123",2,"/","127.0.0.1");
+            addCookie("age","20",1,"/");
+            addCookie("score","450",1,"/");
+            //封装添加方法
+            function addCookie(key,value,day,path,domain) {
+                //1.处理默认保存的路径
+                var index = window.location.pathname.lastIndexOf("/");  //返回/最后出现的位置
+                var currentPath = window.location.pathname.slice(0,index); //slice截取字符串片段，不包括index位置出的字符
+                path = path || currentPath;
+                //2.处理默认保存的domain
+                domain = domain || document.domain;
+                //3.处理默人的过期时间
+                if(!day){
+                    document.cookie = key+"="+value+";path="+path+";domain="+domain+";";
+                }else{
+                    var date = new Date();
+                    var time = date.setDate(date.getDate() + day);  //过期时间
+                    document.cookie = key+"="+value+";expires="+date.toGMTString()+";path="+path+";domain="+domain+";";
+                }
+            }
+
+            //获取当前的路劲path
+            // console.log(window.location.pathname);   //   /PHP/Cookie/02.html
+            // var index = window.location.pathname.lastIndexOf("/");  //返回最后出现/的位置
+            // var currentPath = window.location.pathname.slice(0,index);
+            // console.log(currentPath);
+
+            //获取domain
+            // console.log(document.domain);
+
+            //获取cookie
+            function getCookie(key) {
+                // console.log(document.cookie);
+                var res = document.cookie.split(";");
+                // console.log(res);
+                for(var i=0;i<res.length;i++){
+                    // console.log(res[i]);
+                    var temp = res[i].split("=");
+                    // console.log(temp);
+                    if(temp[0].trim() === key){
+                        return temp[1];
+                    }
+                }
+            }
+
+            //删除cookie
+            // 注意：默认情况下，只能删除默认路径下保存的cookie，如果删除指定路径的cookie，不要传递path参数。
+            function delCookie(key,path) {
+                //思想：将过期设置提前
+                addCookie(key,getCookie(key),-1,path)
+            }
+            delCookie("sex","/")
+
+        }
+        
+    </script>
+</head>
+<body>
+    <button> cookie </button>
+</body>
+</html>
