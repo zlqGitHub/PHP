@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-resource.js"></script>
+    <!--vue-resource是基于vue.js的，要后导入-->
+</head>
+<body>
+      <div id="app">
+          <input type="button" value="get方式" v-on:click="getInfo">
+          <input type="button" value="post方式" v-on:click="postInfo">
+          <input type="button" value="jsonp方式" v-on:click="jsonpInfo">
+      </div>
+      
+      <script>
+          var vm = new Vue({
+             el:'#app',
+             data:{},   
+             methods:{
+                 getInfo(){
+                    this.$http.get('../lib/test.json').then(result=> {
+                        console.log(result.body);
+                    })  
+                 },
+                 //get请求，通过function执行的成功的回调函数，得到body和data等数据    
+ 
+                 postInfo(){
+                     this.$http.post('http://jsonplaceholder.typicode.com/users',{},{emulateJSON:true}).then(result=>{
+                         console.log(result.body);
+                     })
+                 },
+                 //post请求，中间花括号空的部分为提交给服务器的数据这里默认，emulateJSON:true,将手动提交表单格式设置为application/x-www-form-urlencoded格式
+ 
+                 jsonpInfo(){
+                     this.$http.jsonp('http://jsonplaceholder.typicode.com/users').then(result=>{
+                         console.log(result.body)
+                     })
+                 }
+             } 
+          });
+      </script>
+</body>
